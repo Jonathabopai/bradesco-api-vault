@@ -1,26 +1,618 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bradesco-api-vault</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bradesco API Vault | Documentação de APIs Internas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-symbol">B</div>
+          <h1 class="logo-text">API Vault</h1>
+        </div>
+        <input type="checkbox" id="mobile-toggle" class="mobile-toggle">
+        <label for="mobile-toggle" class="mobile-toggle-label">
+          <span></span>
+        </label>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <div class="category">
+          <input type="checkbox" id="cat-1" class="category-toggle" checked>
+          <label for="cat-1" class="category-label">Serviços Bancários</label>
+          <div class="subcategories">
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-1-1" class="subcategory-toggle" checked>
+              <label for="subcat-1-1" class="subcategory-label">Conta Corrente</label>
+              <ul class="api-list">
+                <li><a href="#api-saldo">API de Saldo</a></li>
+                <li><a href="#api-extrato">API de Extrato</a></li>
+                <li><a href="#api-transferencia">API de Transferência</a></li>
+              </ul>
+            </div>
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-1-2" class="subcategory-toggle">
+              <label for="subcat-1-2" class="subcategory-label">Cartões</label>
+              <ul class="api-list">
+                <li><a href="#api-cartao-info">API de Informações de Cartão</a></li>
+                <li><a href="#api-cartao-fatura">API de Fatura</a></li>
+                <li><a href="#api-cartao-limite">API de Limite</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="category">
+          <input type="checkbox" id="cat-2" class="category-toggle">
+          <label for="cat-2" class="category-label">Investimentos</label>
+          <div class="subcategories">
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-2-1" class="subcategory-toggle">
+              <label for="subcat-2-1" class="subcategory-label">Fundos</label>
+              <ul class="api-list">
+                <li><a href="#api-lista-fundos">API de Lista de Fundos</a></li>
+                <li><a href="#api-fundo-detalhes">API de Detalhes do Fundo</a></li>
+                <li><a href="#api-fundo-aplicacao">API de Aplicação</a></li>
+              </ul>
+            </div>
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-2-2" class="subcategory-toggle">
+              <label for="subcat-2-2" class="subcategory-label">Renda Fixa</label>
+              <ul class="api-list">
+                <li><a href="#api-cdb">API de CDB</a></li>
+                <li><a href="#api-lci-lca">API de LCI/LCA</a></li>
+                <li><a href="#api-tesouro">API de Tesouro Direto</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="category">
+          <input type="checkbox" id="cat-3" class="category-toggle">
+          <label for="cat-3" class="category-label">Segurança</label>
+          <div class="subcategories">
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-3-1" class="subcategory-toggle">
+              <label for="subcat-3-1" class="subcategory-label">Autenticação</label>
+              <ul class="api-list">
+                <li><a href="#api-token">API de Token</a></li>
+                <li><a href="#api-biometria">API de Biometria</a></li>
+                <li><a href="#api-2fa">API de 2FA</a></li>
+              </ul>
+            </div>
+            <div class="subcategory">
+              <input type="checkbox" id="subcat-3-2" class="subcategory-toggle">
+              <label for="subcat-3-2" class="subcategory-label">Autorização</label>
+              <ul class="api-list">
+                <li><a href="#api-permissoes">API de Permissões</a></li>
+                <li><a href="#api-roles">API de Roles</a></li>
+                <li><a href="#api-audit">API de Auditoria</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">DB</div>
+          <div class="user-details">
+            <div class="user-name">Desenvolvedor Bradesco</div>
+            <div class="user-role">Time de Desenvolvimento</div>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-    <meta property="og:title" content="bradesco-api-vault" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Buscar APIs...">
+          <div class="search-icon">⌕</div>
+        </div>
+        <div class="header-actions">
+          <div class="action-button">
+            <span class="action-icon">?</span>
+            <span class="action-text">Ajuda</span>
+          </div>
+          <div class="action-button">
+            <span class="action-icon">⚙</span>
+            <span class="action-text">Configurações</span>
+          </div>
+        </div>
+      </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+      <!-- API Sections -->
+      <div class="api-sections">
+        <!-- Default Welcome Section -->
+        <section id="welcome" class="api-section active">
+          <div class="welcome-container">
+            <h2 class="welcome-title">Bem-vindo ao API Vault do Bradesco</h2>
+            <p class="welcome-subtitle">Selecione uma API no menu lateral para visualizar sua documentação</p>
+            <div class="welcome-cards">
+              <div class="welcome-card">
+                <div class="card-icon">📊</div>
+                <h3>20 APIs Internas</h3>
+                <p>Acesse todas as APIs internas organizadas por categorias</p>
+              </div>
+              <div class="welcome-card">
+                <div class="card-icon">📝</div>
+                <h3>Documentação Completa</h3>
+                <p>Endpoints, parâmetros, exemplos de requisição e resposta</p>
+              </div>
+              <div class="welcome-card">
+                <div class="card-icon">🔐</div>
+                <h3>Segurança</h3>
+                <p>Informações de autenticação e autorização para cada API</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <!-- API Saldo -->
+        <section id="api-saldo" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Saldo</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+          
+          <div class="api-description">
+            <p>API para consulta de saldo em conta corrente. Retorna o saldo disponível, limite de cheque especial e valor de bloqueios judiciais.</p>
+          </div>
+          
+          <div class="api-grid">
+            <div class="api-card">
+              <h3 class="card-title">Endpoint</h3>
+              <div class="endpoint-container">
+                <code class="endpoint">/v1/contas/{agencia}/{conta}/saldo</code>
+                <div class="copy-button">Copiar</div>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Autenticação</h3>
+              <p class="auth-method">OAuth 2.0 com token JWT</p>
+              <p class="auth-scope">Escopo requerido: <code>read:saldo</code></p>
+            </div>
+            
+            <div class="api-card full-width">
+              <h3 class="card-title">Parâmetros</h3>
+              <div class="params-table-container">
+                <table class="params-table">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Localização</th>
+                      <th>Tipo</th>
+                      <th>Obrigatório</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>agencia</td>
+                      <td>path</td>
+                      <td>string</td>
+                      <td>Sim</td>
+                      <td>Número da agência</td>
+                    </tr>
+                    <tr>
+                      <td>conta</td>
+                      <td>path</td>
+                      <td>string</td>
+                      <td>Sim</td>
+                      <td>Número da conta com dígito</td>
+                    </tr>
+                    <tr>
+                      <td>data_referencia</td>
+                      <td>query</td>
+                      <td>string (date)</td>
+                      <td>Não</td>
+                      <td>Data de referência no formato YYYY-MM-DD</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Requisição</h3>
+              <div class="code-container">
+                <pre><code>GET /v1/contas/1234/123456-7/saldo HTTP/1.1
+Host: api.interno.bradesco.com.br
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+</code></pre>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Resposta</h3>
+              <div class="code-container">
+                <pre><code>{
+  "codigo_resposta": "00",
+  "mensagem": "Sucesso",
+  "dados": {
+    "saldo_disponivel": 1250.75,
+    "limite_cheque_especial": 1000.00,
+    "valor_bloqueado": 0.00,
+    "data_saldo": "2023-04-12",
+    "hora_saldo": "15:30:45"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- API Extrato -->
+        <section id="api-extrato" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Extrato</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+          
+          <div class="api-description">
+            <p>API para consulta de extrato bancário. Retorna movimentações da conta corrente em um período específico.</p>
+          </div>
+          
+          <div class="api-grid">
+            <div class="api-card">
+              <h3 class="card-title">Endpoint</h3>
+              <div class="endpoint-container">
+                <code class="endpoint">/v1/contas/{agencia}/{conta}/extrato</code>
+                <div class="copy-button">Copiar</div>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Autenticação</h3>
+              <p class="auth-method">OAuth 2.0 com token JWT</p>
+              <p class="auth-scope">Escopo requerido: <code>read:extrato</code></p>
+            </div>
+            
+            <div class="api-card full-width">
+              <h3 class="card-title">Parâmetros</h3>
+              <div class="params-table-container">
+                <table class="params-table">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Localização</th>
+                      <th>Tipo</th>
+                      <th>Obrigatório</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>agencia</td>
+                      <td>path</td>
+                      <td>string</td>
+                      <td>Sim</td>
+                      <td>Número da agência</td>
+                    </tr>
+                    <tr>
+                      <td>conta</td>
+                      <td>path</td>
+                      <td>string</td>
+                      <td>Sim</td>
+                      <td>Número da conta com dígito</td>
+                    </tr>
+                    <tr>
+                      <td>data_inicio</td>
+                      <td>query</td>
+                      <td>string (date)</td>
+                      <td>Sim</td>
+                      <td>Data inicial no formato YYYY-MM-DD</td>
+                    </tr>
+                    <tr>
+                      <td>data_fim</td>
+                      <td>query</td>
+                      <td>string (date)</td>
+                      <td>Sim</td>
+                      <td>Data final no formato YYYY-MM-DD</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Requisição</h3>
+              <div class="code-container">
+                <pre><code>GET /v1/contas/1234/123456-7/extrato?data_inicio=2023-04-01&data_fim=2023-04-12 HTTP/1.1
+Host: api.interno.bradesco.com.br
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+</code></pre>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Resposta</h3>
+              <div class="code-container">
+                <pre><code>{
+  "codigo_resposta": "00",
+  "mensagem": "Sucesso",
+  "dados": {
+    "saldo_inicial": 980.25,
+    "saldo_final": 1250.75,
+    "movimentacoes": [
+      {
+        "data": "2023-04-02",
+        "descricao": "PIX RECEBIDO - MARIA SILVA",
+        "valor": 1200.00,
+        "tipo": "CREDITO",
+        "canal": "PIX"
+      },
+      {
+        "data": "2023-04-05",
+        "descricao": "PAGAMENTO DE BOLETO",
+        "valor": 245.90,
+        "tipo": "DEBITO",
+        "canal": "INTERNET BANKING"
+      },
+      {
+        "data": "2023-04-10",
+        "descricao": "COMPRA COM CARTAO - MERCADO",
+        "valor": 683.60,
+        "tipo": "DEBITO",
+        "canal": "CARTAO DEBITO"
+      }
+    ]
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- API Transferencia -->
+        <section id="api-transferencia" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Transferência</h2>
+            <div class="api-badge api-badge-post">POST</div>
+          </div>
+          
+          <div class="api-description">
+            <p>API para realizar transferências entre contas. Permite transferências entre contas Bradesco, DOC, TED e PIX.</p>
+          </div>
+          
+          <div class="api-grid">
+            <div class="api-card">
+              <h3 class="card-title">Endpoint</h3>
+              <div class="endpoint-container">
+                <code class="endpoint">/v1/transferencias</code>
+                <div class="copy-button">Copiar</div>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Autenticação</h3>
+              <p class="auth-method">OAuth 2.0 com token JWT</p>
+              <p class="auth-scope">Escopo requerido: <code>write:transferencia</code></p>
+            </div>
+            
+            <div class="api-card full-width">
+              <h3 class="card-title">Parâmetros</h3>
+              <div class="params-table-container">
+                <table class="params-table">
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Localização</th>
+                      <th>Tipo</th>
+                      <th>Obrigatório</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>tipo_transferencia</td>
+                      <td>body</td>
+                      <td>string</td>
+                      <td>Sim</td>
+                      <td>Tipo de transferência: MESMA_TITULARIDADE, DOC, TED, PIX</td>
+                    </tr>
+                    <tr>
+                      <td>valor</td>
+                      <td>body</td>
+                      <td>number</td>
+                      <td>Sim</td>
+                      <td>Valor da transferência</td>
+                    </tr>
+                    <tr>
+                      <td>conta_origem</td>
+                      <td>body</td>
+                      <td>object</td>
+                      <td>Sim</td>
+                      <td>Dados da conta de origem</td>
+                    </tr>
+                    <tr>
+                      <td>conta_destino</td>
+                      <td>body</td>
+                      <td>object</td>
+                      <td>Sim</td>
+                      <td>Dados da conta de destino</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Requisição</h3>
+              <div class="code-container">
+                <pre><code>POST /v1/transferencias HTTP/1.1
+Host: api.interno.bradesco.com.br
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "tipo_transferencia": "PIX",
+  "valor": 500.00,
+  "descricao": "Pagamento de serviço",
+  "conta_origem": {
+    "agencia": "1234",
+    "conta": "123456-7"
+  },
+  "conta_destino": {
+    "tipo_chave": "CPF",
+    "chave": "123.456.789-00"
+  }
+}</code></pre>
+              </div>
+            </div>
+            
+            <div class="api-card">
+              <h3 class="card-title">Exemplo de Resposta</h3>
+              <div class="code-container">
+                <pre><code>{
+  "codigo_resposta": "00",
+  "mensagem": "Sucesso",
+  "dados": {
+    "id_transacao": "TRF123456789",
+    "data_hora": "2023-04-12T16:45:22.456Z",
+    "status": "EFETIVADA",
+    "valor": 500.00,
+    "comprovante_url": "https://api.interno.bradesco.com.br/v1/comprovantes/TRF123456789"
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- API mais detalhadas podem ser adicionadas seguindo o mesmo padrão -->
+        
+        <!-- Seção vazia para outras APIs -->
+        <section id="api-cartao-info" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Informações de Cartão</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+          <div class="api-description">
+            <p>API para consulta de informações de cartões de crédito. Retorna dados como número mascarado, validade, nome do titular, bandeira e status do cartão.</p>
+          </div>
+          <!-- Restante da documentação seria similar ao padrão acima -->
+        </section>
+        
+        <section id="api-cartao-fatura" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Fatura</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+          <div class="api-description">
+            <p>API para consulta de faturas de cartão de crédito. Retorna detalhes da fatura atual ou anteriores, incluindo valor, vencimento e transações.</p>
+          </div>
+        </section>
+        
+        <section id="api-cartao-limite" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Limite</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+          <div class="api-description">
+            <p>API para consulta de limite de cartão de crédito. Retorna informações sobre limite total, utilizado e disponível para compras.</p>
+          </div>
+        </section>
+        
+        <!-- Outras seções de API seguiriam o mesmo padrão -->
+        
+        <section id="api-lista-fundos" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Lista de Fundos</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-fundo-detalhes" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Detalhes do Fundo</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-fundo-aplicacao" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Aplicação</h2>
+            <div class="api-badge api-badge-post">POST</div>
+          </div>
+        </section>
+        
+        <section id="api-cdb" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de CDB</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-lci-lca" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de LCI/LCA</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-tesouro" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Tesouro Direto</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-token" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Token</h2>
+            <div class="api-badge api-badge-post">POST</div>
+          </div>
+        </section>
+        
+        <section id="api-biometria" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Biometria</h2>
+            <div class="api-badge api-badge-post">POST</div>
+          </div>
+        </section>
+        
+        <section id="api-2fa" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de 2FA</h2>
+            <div class="api-badge api-badge-post">POST</div>
+          </div>
+        </section>
+        
+        <section id="api-permissoes" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Permissões</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-roles" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Roles</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+        
+        <section id="api-audit" class="api-section">
+          <div class="api-header">
+            <h2 class="api-title">API de Auditoria</h2>
+            <div class="api-badge api-badge-get">GET</div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
 </html>
