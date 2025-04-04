@@ -1,26 +1,5 @@
 
-/* Base Styles and Variables */
-:root {
-  --bradesco-red: #CC092F;
-  --bradesco-dark: #333333;
-  --bradesco-light: #FFFFFF;
-  --bradesco-gray: #F5F5F7;
-  --bradesco-mid-gray: #E0E0E2;
-  --bradesco-text: #222222;
-  --bradesco-text-light: #666666;
-  --bradesco-border: rgba(0, 0, 0, 0.1);
-  --bradesco-shadow: rgba(0, 0, 0, 0.05);
-  --bradesco-success: #28A745;
-  --bradesco-warning: #FFC107;
-  --bradesco-info: #17A2B8;
-  
-  --sidebar-width: 280px;
-  --header-height: 64px;
-  --transition-speed: 0.3s;
-  --border-radius: 4px;
-}
-
-/* Reset */
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -31,9 +10,9 @@ body, html {
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: var(--bradesco-text);
+  color: #222222;
   height: 100%;
-  background-color: var(--bradesco-gray);
+  background-color: #F5F5F7;
 }
 
 /* App Container */
@@ -45,16 +24,16 @@ body, html {
 
 /* Sidebar Styles */
 .sidebar {
-  width: var(--sidebar-width);
+  width: 280px;
   height: 100vh;
-  background-color: var(--bradesco-dark);
-  color: var(--bradesco-light);
+  background-color: #333333;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   position: fixed;
   left: 0;
   top: 0;
-  transition: transform var(--transition-speed);
+  transition: transform 0.3s;
   z-index: 100;
 }
 
@@ -63,7 +42,7 @@ body, html {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  height: var(--header-height);
+  height: 64px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -80,7 +59,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bradesco-red);
+  background-color: #CC092F;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -109,7 +88,7 @@ body, html {
   padding: 10px 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
+  transition: background-color 0.3s;
   position: relative;
 }
 
@@ -121,7 +100,7 @@ body, html {
   content: "+";
   position: absolute;
   right: 20px;
-  transition: transform var(--transition-speed);
+  transition: transform 0.3s;
 }
 
 .category-toggle:checked + .category-label::after {
@@ -131,7 +110,7 @@ body, html {
 .subcategories {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-speed);
+  transition: max-height 0.3s;
 }
 
 .category-toggle:checked ~ .subcategories {
@@ -151,7 +130,7 @@ body, html {
   padding: 8px 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
+  transition: background-color 0.3s;
   position: relative;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -164,7 +143,7 @@ body, html {
   content: "+";
   position: absolute;
   right: 20px;
-  transition: transform var(--transition-speed);
+  transition: transform 0.3s;
 }
 
 .subcategory-toggle:checked + .subcategory-label::after {
@@ -174,7 +153,7 @@ body, html {
 .api-list {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-speed);
+  transition: max-height 0.3s;
   list-style: none;
 }
 
@@ -191,21 +170,21 @@ body, html {
   padding: 6px 20px;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: all var(--transition-speed);
+  transition: all 0.3s;
   font-size: 13px;
   border-left: 2px solid transparent;
 }
 
 .api-list a:hover {
-  color: var(--bradesco-light);
+  color: #FFFFFF;
   background-color: rgba(255, 255, 255, 0.05);
-  border-left: 2px solid var(--bradesco-red);
+  border-left: 2px solid #CC092F;
 }
 
 .api-list a:target {
-  color: var(--bradesco-light);
+  color: #FFFFFF;
   background-color: rgba(255, 255, 255, 0.1);
-  border-left: 2px solid var(--bradesco-red);
+  border-left: 2px solid #CC092F;
   font-weight: 600;
 }
 
@@ -223,7 +202,7 @@ body, html {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: var(--bradesco-red);
+  background-color: #CC092F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,7 +224,7 @@ body, html {
 /* Main Content Styles */
 .main-content {
   flex: 1;
-  margin-left: var(--sidebar-width);
+  margin-left: 280px;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -253,13 +232,13 @@ body, html {
 }
 
 .content-header {
-  height: var(--header-height);
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  background-color: var(--bradesco-light);
-  box-shadow: 0 2px 4px var(--bradesco-shadow);
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   z-index: 10;
 }
 
@@ -271,15 +250,15 @@ body, html {
 .search-input {
   width: 100%;
   padding: 8px 12px 8px 36px;
-  border: 1px solid var(--bradesco-mid-gray);
+  border: 1px solid #E0E0E2;
   border-radius: 20px;
   font-size: 14px;
   outline: none;
-  transition: all var(--transition-speed);
+  transition: all 0.3s;
 }
 
 .search-input:focus {
-  border-color: var(--bradesco-red);
+  border-color: #CC092F;
   box-shadow: 0 0 0 2px rgba(204, 9, 47, 0.1);
 }
 
@@ -289,7 +268,7 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   font-size: 18px;
-  color: var(--bradesco-text-light);
+  color: #666666;
 }
 
 .header-actions {
@@ -308,7 +287,7 @@ body, html {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: var(--bradesco-gray);
+  background-color: #F5F5F7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,10 +310,10 @@ body, html {
 .api-section {
   display: none;
   opacity: 0;
-  transition: opacity var(--transition-speed);
-  background-color: var(--bradesco-light);
+  transition: opacity 0.3s;
+  background-color: #FFFFFF;
   border-radius: 8px;
-  box-shadow: 0 2px 4px var(--bradesco-shadow);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   padding: 30px;
   margin-bottom: 20px;
 }
@@ -353,6 +332,11 @@ body, html {
 /* When any API section is targeted, hide the welcome section */
 .api-section:target ~ #welcome {
   display: none;
+}
+
+/* This ensures the welcome section is hidden when ANY other section is targeted */
+:target ~ #welcome {
+  display: none !important;
 }
 
 .api-header {
@@ -376,25 +360,25 @@ body, html {
 }
 
 .api-badge-get {
-  background-color: var(--bradesco-info);
+  background-color: #17A2B8;
 }
 
 .api-badge-post {
-  background-color: var(--bradesco-success);
+  background-color: #28A745;
 }
 
 .api-badge-put {
-  background-color: var(--bradesco-warning);
+  background-color: #FFC107;
 }
 
 .api-badge-delete {
-  background-color: var(--bradesco-red);
+  background-color: #CC092F;
 }
 
 .api-description {
   margin-bottom: 30px;
   font-size: 16px;
-  color: var(--bradesco-text-light);
+  color: #666666;
   line-height: 1.5;
 }
 
@@ -405,8 +389,8 @@ body, html {
 }
 
 .api-card {
-  background-color: var(--bradesco-gray);
-  border-radius: var(--border-radius);
+  background-color: #F5F5F7;
+  border-radius: 4px;
   padding: 20px;
 }
 
@@ -418,32 +402,32 @@ body, html {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 15px;
-  color: var(--bradesco-text);
+  color: #222222;
 }
 
 .endpoint-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--bradesco-dark);
+  background-color: #333333;
   padding: 10px 15px;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
 }
 
 .endpoint {
-  color: var(--bradesco-light);
+  color: #FFFFFF;
   font-family: monospace;
   font-size: 14px;
 }
 
 .copy-button {
   font-size: 12px;
-  color: var(--bradesco-light);
+  color: #FFFFFF;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
   padding: 3px 8px;
   cursor: pointer;
-  transition: background-color var(--transition-speed);
+  transition: background-color 0.3s;
 }
 
 .copy-button:hover {
@@ -473,23 +457,23 @@ body, html {
 }
 
 .params-table th {
-  background-color: var(--bradesco-dark);
-  color: var(--bradesco-light);
+  background-color: #333333;
+  color: #FFFFFF;
   padding: 10px;
   font-weight: 600;
 }
 
 .params-table th:first-child {
-  border-top-left-radius: var(--border-radius);
+  border-top-left-radius: 4px;
 }
 
 .params-table th:last-child {
-  border-top-right-radius: var(--border-radius);
+  border-top-right-radius: 4px;
 }
 
 .params-table td {
   padding: 10px;
-  border-bottom: 1px solid var(--bradesco-border);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .params-table tr:last-child td {
@@ -497,8 +481,8 @@ body, html {
 }
 
 .code-container {
-  background-color: var(--bradesco-dark);
-  border-radius: var(--border-radius);
+  background-color: #333333;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -510,7 +494,7 @@ pre {
 
 code {
   font-family: monospace;
-  color: var(--bradesco-light);
+  color: #FFFFFF;
   font-size: 13px;
   line-height: 1.5;
 }
@@ -525,12 +509,12 @@ code {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 15px;
-  color: var(--bradesco-text);
+  color: #222222;
 }
 
 .welcome-subtitle {
   font-size: 18px;
-  color: var(--bradesco-text-light);
+  color: #666666;
   margin-bottom: 40px;
 }
 
@@ -543,10 +527,10 @@ code {
 }
 
 .welcome-card {
-  background-color: var(--bradesco-gray);
+  background-color: #F5F5F7;
   border-radius: 8px;
   padding: 30px 20px;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .welcome-card:hover {
@@ -566,7 +550,7 @@ code {
 }
 
 .welcome-card p {
-  color: var(--bradesco-text-light);
+  color: #666666;
   font-size: 14px;
 }
 
@@ -590,8 +574,8 @@ code {
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: var(--bradesco-light);
-  transition: transform var(--transition-speed);
+  background-color: #FFFFFF;
+  transition: transform 0.3s;
 }
 
 .mobile-toggle-label span::before,
@@ -614,8 +598,12 @@ code {
 
 /* Responsive Styles */
 @media screen and (max-width: 1024px) {
-  :root {
-    --sidebar-width: 240px;
+  .sidebar {
+    width: 240px;
+  }
+  
+  .main-content {
+    margin-left: 240px;
   }
   
   .search-container {
@@ -628,11 +616,8 @@ code {
 }
 
 @media screen and (max-width: 768px) {
-  :root {
-    --sidebar-width: 280px;
-  }
-  
   .sidebar {
+    width: 280px;
     transform: translateX(-100%);
   }
   
